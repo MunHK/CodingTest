@@ -1,7 +1,6 @@
-import sys
 n=[]
 m=int(input())
 for _ in range(m):
-    n.append(int(sys.stdin.readline()))
+    n.append(int(input()))
 n.sort()
 print("\n".join(map(str,n)))
