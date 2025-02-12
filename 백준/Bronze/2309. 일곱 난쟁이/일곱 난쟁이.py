@@ -1,14 +1,12 @@
+import itertools
+
 height=[]
 
 for i in range(9):
     height.append(int(input()))
 
-for j in range(8):
-    num=sum(height)-100-height[j]
-    if num in height[j+1:]:
-        height.remove(height[j])
-        height.remove(num)
+for i in itertools.combinations(height,7):
+    if sum(i)==100:
+        for j in sorted(i):
+            print(j)
         break
-
-for k in sorted(height):
-    print(k)
