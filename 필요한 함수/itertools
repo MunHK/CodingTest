@@ -1,0 +1,41 @@
+import itertools
+
+A=['A','B','C']
+B=[1,2,3]
+  
+print('-----------순열-----------')
+for p in itertools.permutations(A,2):
+    print(p)
+'''
+('A', 'B')
+('A', 'C')
+('B', 'A')
+'''
+  
+print('-----------조합-----------')
+for c in itertools.combinations(A,2):
+    print(c)
+'''
+('A', 'B')
+('A', 'C')
+('B', 'C')
+'''
+  
+print('----------중복조합----------')
+for cwr in itertools.combinations_with_replacement(A,2):
+    print(cwr)
+'''
+('A', 'A')
+('A', 'B')
+('A', 'C')
+'''
+
+print('---------데카르트곱---------')
+for pr in itertools.product(A,B,repeat=1):
+    print(pr)
+  
+'''
+('A', 1)
+('A', 2)
+('B', 1)
+'''
