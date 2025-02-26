@@ -1,7 +1,10 @@
+import sys
+input = sys.stdin.readline
+
 n=int(input())
-result=[]
 for i in range(n):
     result=list(map(str,input().split()))
+    reverse=[]
     for i in result:
-        print(i[::-1],end=' ')
-    print()
+        reverse.append(i[::-1])
+    print(' '.join(reverse))
