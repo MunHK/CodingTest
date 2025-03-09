@@ -2,6 +2,6 @@ import sys
 
 input=sys.stdin.readline
 
-s=str(input())
+s=input()
 n=int(input())
 print(s[n-1])
