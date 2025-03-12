@@ -1,2 +1,2 @@
-a,b=map(str,input().split())
-print(int(a,int(b)))
+word,n=input().split()
+print(int(word,int(n)))
