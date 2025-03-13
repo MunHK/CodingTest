@@ -1,13 +1,11 @@
-n=int(input())
-m=list(map(int,input().split()))
-result=0
-for i in m:
-    if i==1:
-        continue
-    cnt=0
-    for j in range(1,int(i**0.5)+1):
-        if i%j==0:
-            cnt+=1
-    if cnt==1:
-        result+=1
-print(result)
+num=[True]*1001
+num[1]=False
+for i in range(2,int(1000**0.5)+1):
+  if num[i]:
+    for j in range(i*2,1001,i):
+      num[j]=False
+
+input()
+result=list(map(int,input().split()))
+
+print(sum([1 for i in result if num[i]]))
