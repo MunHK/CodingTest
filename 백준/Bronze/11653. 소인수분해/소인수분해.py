@@ -1,8 +1,7 @@
 n=int(input())
-a=2
-while(n>1):
-  if n%a==0:
-    print(a)
-    n//=a
-    continue
-  a+=1
+for i in range(2,int(n**0.5)+1):
+  while n%i==0:
+    print(i)
+    n//=i
+if n!=1:
+  print(n)
