@@ -1,5 +1,4 @@
 import math
 a,b=map(int,input().split())
-
-print(math.gcd(a,b))
-print(a*b//math.gcd(a,b))
+gcd=math.gcd(a,b)
+print(gcd,gcd*a//gcd*b//gcd)
