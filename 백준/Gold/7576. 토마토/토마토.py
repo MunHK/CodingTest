@@ -1,16 +1,18 @@
 import sys
-input=sys.stdin.readline
 from collections import deque
+input=sys.stdin.readline
 n,m=map(int,input().split())
-graph=[(list(map(int,input().split()))) for _ in range(m)]
+graph=[]
 q=deque()
-mx=0
-for i in range(m):
-    for j in range(n):
-        if graph[i][j]==1:
-            q.append([i,j])
 
-def bfs():
+for i in range(m):
+    a=list(map(int,input().split()))
+    graph.append(a)
+    for j in range(n):
+        if a[j]==1:
+            q.append([i,j])
+def bfs(q):
+    mx=0
     dx=[1,-1,0,0]
     dy=[0,0,1,-1]
     while q:
@@ -21,12 +23,26 @@ def bfs():
             if 0<=nx<m and 0<=ny<n and graph[nx][ny]==0:
                 q.append([nx,ny])
                 graph[nx][ny]=graph[x][y]+1
+                mx=max(graph[nx][ny],mx)
+    return mx
 
-bfs()
-for i in graph:
-    for j in i:
-        if j==0:
-            print(-1)
-            exit(0)
-    mx=max(mx,max(i))
-print(mx-1)
+flag=False
+for i in range(m):
+    if 0 in graph[i]:
+        flag=True
+if flag:
+    mx=bfs(q)
+    for i in range(m):
+        if 0 in graph[i]:
+            flag=False
+    if flag:
+        print(mx-1)
+    else:
+        print(-1)
+else:
+    print(0)
+
+
+
+
+
