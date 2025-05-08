@@ -1,0 +1,9 @@
+for case in range(10):
+    n=int(input())
+    num=list(map(int,input().split()))
+    result=0
+    for i in range(2,n-1):
+        mx=max(max(num[i-2:i]),max(num[i+1:i+3]))
+        if num[i]>mx:
+            result+=num[i]-mx
+    print(f'#{case+1} {result}')
