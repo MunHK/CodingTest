@@ -1,0 +1,12 @@
+n=int(input())
+for test_case in range(1,n+1):
+    int(input())
+    num=list(map(int,input().split()))
+    result=0
+    max=num[-1]
+    for j in num[-2::-1]:
+        if j>max:
+            max=j
+        else:
+            result+=max-j
+    print(f'#{test_case} {result}')
