@@ -1,0 +1,16 @@
+t=int(input())
+for case in range(1,t+1):
+    n,m=map(int,input().split())
+    num=[]
+    result=0
+
+    for _ in range(n):
+        num.append(list(map(int,input().split())))
+
+    for i in range(n-m+1):
+        for j in range(n-m+1):
+            s=0
+            for k in range(m):
+                s+=sum(num[i+k][j:j+m])
+            result=max(result,s)
+    print(f'#{case} {result}')
