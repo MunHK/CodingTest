@@ -1,0 +1,21 @@
+t=int(input())
+for case in range(1,t+1):
+    n=int(input())
+    graph=[[0]*n for _ in range(n)]
+    graph[0][0]=1
+    dx=[0,1,0,-1]
+    dy=[1,0,-1,0]
+    def dfs(x,y,f,cnt):
+        if cnt==n**2-1:
+            return
+        nx=x+dx[f%4]
+        ny=y+dy[f%4]
+        if 0<=nx<n and 0<=ny<n and graph[nx][ny]==0:
+            graph[nx][ny]=graph[x][y]+1
+            dfs(nx,ny,f,cnt+1)
+        else:
+            dfs(x,y,f+1,cnt)
+    dfs(0,0,0,0)
+    print(f'#{case}')
+    for g in graph:
+        print(*g)
