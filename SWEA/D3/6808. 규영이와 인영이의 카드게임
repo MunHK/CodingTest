@@ -1,0 +1,21 @@
+import itertools
+for case in range(1,int(input())+1):
+    iny=list(map(int,input().split()))
+    kyuy=[]
+    iresult,kresult=0,0
+    for i in range(1,19):
+        if i not in iny:
+            kyuy.append(i)
+
+    for ky in itertools.permutations(kyuy,9):
+        iw,kw=0,0
+        for i,k in zip(iny,ky):
+            if i>k:
+                iw+=i+k
+            else:
+                kw+=i+k
+        if iw>kw:
+            iresult+=1
+        if kw>iw:
+            kresult+=1
+    print(f'#{case} {iresult} {kresult}')
