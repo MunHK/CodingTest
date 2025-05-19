@@ -1,17 +1,16 @@
-def btk(start, score, cal):  # [0]=점수 [1]=칼로리
-    if cal > l:
-        return
-    else:
-        result.append(score)
-    for i in range(start, n):
-        btk(i + 1, score + ham[i][0], cal + ham[i][1])
-
 for case in range(1,int(input())+1):
     n,l=map(int,input().split())
-    ham=[]
-    result=[]
+    ham=[[0,0]]
+    dp=[[0]*(l+1) for _ in range(n+1)]
+    result=0
     for _ in range(n):
-        a,b=map(int,input().split())
-        ham.append([a,b])
-    btk(0,0,0)
-    print(f'#{case} {max(result)}')
+        ham.append(list(map(int,input().split())))
+
+    for i in range(1,n+1):
+        for j in range(1,l+1):
+            if ham[i][1]<=j:
+                dp[i][j]=max(dp[i-1][j],ham[i][0]+dp[i-1][j-ham[i][1]])
+            else:
+                dp[i][j]=dp[i-1][j]
+        result=max(dp[i])
+    print(f'#{case} {result}')
