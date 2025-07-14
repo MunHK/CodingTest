@@ -13,7 +13,7 @@ public class Main {
 
             double result=(a*m*105.6)/(60*1000);
 
-            System.out.println((long)Math.floor(result));
+            System.out.println((int)result);
         }
     }
 }
