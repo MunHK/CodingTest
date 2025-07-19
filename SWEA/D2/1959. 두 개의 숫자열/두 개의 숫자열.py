@@ -1,17 +1,17 @@
-t=int(input())
-for case in range(1,t+1):
+for test_case in range(int(input())):
     n,m=map(int,input().split())
-    if n>m:
-        n,m=m,n
-        mum = list(map(int, input().split()))
-        num = list(map(int, input().split()))
+    result=[]
+    if n<m:
+        nnum=list(map(int,input().split()))
+        mnum=list(map(int,input().split()))
     else:
-        num = list(map(int, input().split()))
-        mum = list(map(int, input().split()))
-    mx=0
-    for i in range(m-n+1):
-        s=0
-        for j in range(n):
-            s+=num[j]*mum[j+i]
-        mx=max(mx,s)
-    print(f'#{case} {mx}')
+        n,m=m,n
+        mnum=list(map(int,input().split()))
+        nnum=list(map(int,input().split()))
+
+    for k in range(m-n+1):
+        hap=0
+        for i in range(n):
+            hap+=nnum[i]*mnum[i+k]
+        result.append(hap)
+    print(f'#{test_case+1} {max(result)}')
