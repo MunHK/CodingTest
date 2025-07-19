@@ -1,28 +1,27 @@
-t=int(input())
-for case in range(1,t+1):
+for t in range(int(input())):
     n=int(input())
-    graph=[]
-    result90=[]
-    result180=[]
-    result270=[]
+    num=[]
+    result90=[[0]*n for _ in range(n)]
+    result180=[[0]*n for _ in range(n)]
+    result270=[[0]*n for _ in range(n)]
     for _ in range(n):
-        graph.append(list(map(int,input().split())))
-        result90.append([0]*n)
-        result180.append([0]*n)
-        result270.append([0]*n)
+        num.append(list(map(int,input().split())))
 
-    def rotate(a,b):
-        for i in range(n):
-            for j in range(n):
-                a[j][n-i-1]=b[i][j]
-        return a
+    for i in range(n):
+        for j in range(n):
+            result90[j][n-1-i]=num[i][j]
 
-    result90=rotate(result90,graph)
-    result180=rotate(result180,result90)
-    result270=rotate(result270,result180)
+    for i in range(n):
+        for j in range(n):
+            result180[j][n-1-i]=result90[i][j]
 
-    print(f'#{case}')
-    for i,j,k in zip(result90,result180,result270):
-        print(*i,sep='',end=' ')
-        print(*j,sep='',end=' ')
-        print(*k,sep='')
+    for i in range(n):
+        for j in range(n):
+            result270[j][n-1-i]=result180[i][j]
+
+    print(f'#{t+1}')
+    for i in range(n):
+        print(*result90[i],sep='',end=' ')
+        print(*result180[i],sep='',end=' ')
+        print(*result270[i],sep='')
+    
