@@ -2,23 +2,23 @@ import java.io.*;
 import java.util.*;
 public class Main {
 	public static void main(String args[]) throws IOException {
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine()," ");
 		int a=Integer.parseInt(st.nextToken());
-		int b=Integer.parseInt(st.nextToken())-1;
-		int cnt=0;
-		List<Integer> num=new LinkedList<>();
-		
-		for(int i=1;i<=a;i++) {
+		int b=Integer.parseInt(st.nextToken());
+		Queue<Integer> num = new LinkedList<>();
+		for(int i=1;i<=a;i++)
 			num.add(i);
-		}
 		System.out.print("<");
-		while(a!=1) {
-			cnt=(cnt+b)%a;
-			System.out.printf("%d, ",num.get(cnt));
-			a-=1;
-			num.remove(cnt);
+		while(!num.isEmpty()) {
+			for(int i=0;i<b-1;i++) {
+				num.add(num.poll());
+			}
+			if(num.size()==1)
+				System.out.println(num.poll()+">");
+			else
+				System.out.print(num.poll()+", ");
 		}
-		System.out.printf("%d>",num.get(0));
 	}
 }
