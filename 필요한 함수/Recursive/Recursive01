@@ -1,0 +1,32 @@
+/*
+ * 1 ~ 10 더하는 코드를 작성하세요
+ * for 문을 이용한 코드와 재귀함수를 이용한 코드의 차이를 정리하세요
+ * 
+ * 
+ */
+public class Recursive01 {
+	
+	static void recursive(int i, int sum){
+		// basis part
+		if(i>10) {
+			System.out.println(sum);
+			return;
+		}
+		
+		// logic part
+		sum += i;
+		// inductive part
+		recursive(i+1, sum);
+	}
+	
+	public static void main(String[] args) {
+		int sum = 0;
+		// 반복문
+		for(int i=1;i<=10;i++){
+			sum += i;
+		}
+		System.out.println(sum);
+		// 재귀함수
+		recursive(1,0);
+	}
+}
