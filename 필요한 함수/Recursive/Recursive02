@@ -1,0 +1,21 @@
+/*
+ * 1 ~ 10 까지 더하고 곱하는 코드를 재귀함수로 구현하세요
+ */
+public class Recursive02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		recursive(1,0,1);
+	}
+
+	private static void recursive(int i, int sum, int cross) {
+		// basis part
+		if(i>5) {
+			System.out.printf("%d %d",sum,cross);
+			return ;
+		}
+		
+		// inductive part
+		recursive(i+1,sum+i, cross*i);
+	}
+}
