@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Solution {
-	static int[][] graph;
+	static ArrayList<Integer> graph[];
 	static int n,start;
 	static int[] visited;
 	static int mx;
@@ -17,16 +18,19 @@ public class Solution {
 			
 			n = Integer.parseInt(st.nextToken());
 			start = Integer.parseInt(st.nextToken());
-			graph=new int[101][101];
+			graph=new ArrayList[101];
 			visited=new int[101];
 			mx=0;
 			int result=0;
 			st=new StringTokenizer(br.readLine()," ");
 			
+			for(int i=0;i<101;i++) {
+				graph[i]=new ArrayList<Integer>();
+			}
 			for(int i=0;i<n/2;i++) {
 				int from = Integer.parseInt(st.nextToken());
 				int to = Integer.parseInt(st.nextToken());
-				graph[from][to]=1;
+				graph[from].add(to);
 			}
 			bfs();
 			for(int i=1;i<101;i++) {
@@ -42,8 +46,8 @@ public class Solution {
 		visited[start]=1;
 		while(!q.isEmpty()) {
 			int v = q.poll();
-			for(int i=1;i<101;i++) {
-				if(graph[v][i]==1 && visited[i]==0) {
+			for(int i:graph[v]) {
+				if(visited[i]==0) {
 					q.add(i);
 					visited[i]=visited[v]+1;
 					mx=Math.max(mx, visited[i]);
