@@ -57,11 +57,9 @@ public class Main {
 		while(!q.isEmpty()) {
 			Node node = q.poll();
 			
-			if(result[node.v]<node.w) continue;
-			
 			for(Node p : list[node.v]) {// 2 2, 3 3
-				if(result[p.v]>node.w+p.w) {
-					result[p.v]=node.w+p.w;
+				if(result[p.v]>result[node.v]+p.w) {
+					result[p.v]=result[node.v]+p.w;
 					q.add(new Node(p.v,result[p.v]));
 				}
 			}
